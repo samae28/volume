@@ -8,6 +8,5 @@ export class NavigationPage {
 
     async loginPage(){
         await this.page.getByText('Sign in').click()
-        await this.page.getByText('Login').click()
     }
 }

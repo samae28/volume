@@ -1,16 +1,16 @@
 import { Page } from '@playwright/test';
-import { NavigationPage } from '../page-objects/navigation';
-import { LoginForm } from '../page-objects/loginPage';
+import { NavigationPage } from './navigation';
+import { LoginPage } from './login-page';
 
-export class PageManager{
+export class Pages{
     private readonly page: Page;
     private readonly navigationPage: NavigationPage;
-    private readonly loginForm: LoginForm
+    private readonly loginPage: LoginPage
 
     constructor(page: Page){
         this.page = page;
         this.navigationPage = new NavigationPage(this.page);
-        this.loginForm = new LoginForm(this.page);
+        this.loginPage = new LoginPage(this.page);
     }
 
     navigation(){
@@ -18,6 +18,6 @@ export class PageManager{
     }
 
     login(){
-        return this.loginForm
+        return this.loginPage
     }
 }

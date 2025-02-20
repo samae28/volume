@@ -1,6 +1,6 @@
 import { Page, BrowserContext, Browser } from '@playwright/test';
 
-export class LoginForm{
+export class LoginPage{
     private readonly page: Page;
 
     constructor(page: Page){
@@ -8,6 +8,8 @@ export class LoginForm{
     }
     
     async login(username: string, password: string, keepMeLoggedIn: boolean = false) {
+        
+        await this.page.getByText('Login').click()
         await this.page.getByRole('textbox', { name: 'username' }).fill(username);
         await this.page.getByRole('textbox', { name: 'password' }).fill(password);
 
@@ -39,9 +41,21 @@ export class LoginForm{
         return await this.openNewSessionWithAuth(redirectUrl);
     }
 
-    async getValidationMessage(fieldName: string): Promise<string> {
-        const input = this.page.getByRole('textbox', { name: fieldName });
-        return await input.evaluate((input: HTMLInputElement) => input.validationMessage);
+    async emptyValidationMessage(): Promise<{ username: string; password: string }> {
+        const [usernameMessage, passwordMessage] = await Promise.all([
+            this.page.getByRole('textbox', { name: 'username' }).evaluate((input: HTMLInputElement) => input.validationMessage),
+            this.page.getByRole('textbox', { name: 'password' }).evaluate((input: HTMLInputElement) => input.validationMessage),
+        ]);
+    
+        return { username: usernameMessage, password: passwordMessage };
+    }
+
+    async errorMessage(): Promise<string> {
+        const errorBox = this.page.locator('.alert-danger');  
+        await errorBox.waitFor(); // Ensure the element is present before extracting text
+        return await errorBox.innerText(); // Extract and return the actual error message
     }
     
+    
+   
 }   

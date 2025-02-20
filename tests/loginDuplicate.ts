@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { NavigationPage } from '../page-objects/navigation';
-import { LoginForm } from '../page-objects/loginPage';
+import { NavigationPage } from '../pages/navigation';
+import { LoginForm } from '../pages/login-page';
 
 test.setTimeout(0)
 test.beforeEach(async ({page}) => {
