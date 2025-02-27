@@ -29,9 +29,11 @@ export default defineConfig<Setup>({
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
     // qaURL: 'https://volume-qa1.skydev.solutions',https://volume.com/
-    
     qaURL: 'https://volume.com/',
 
+    actionTimeout: 5000, // 5 seconds timeout for every action
+    navigationTimeout: 10000,
+    
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },

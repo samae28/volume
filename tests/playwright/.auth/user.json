@@ -1,0 +1,75 @@
+{
+  "cookies": [
+    {
+      "name": "affkey",
+      "value": "\"eJyrVipSslJQUqoFAAwfAk0=\"",
+      "domain": ".volume.com",
+      "path": "/",
+      "expires": 1743283427.798494,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "sbr",
+      "value": "sec:sbra42c990b-e33b-4bc4-8f5a-5052a4e3338e:1tnlMB:KA1l4OC2Q3VK6WFCQQ4nyllv0aOQuhsOK4lZ-z4yyss",
+      "domain": "volume.com",
+      "path": "/",
+      "expires": 1775251427.798581,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "__cf_bm",
+      "value": "19ncp4Rs.MwWkR0ZHdwGbc1xuZFrGFhPfQ7IKCDaigA-1740691427-1.0.1.1-LbvC.x3x4WJnDMN9Vs5Gf1EaYex2LsHcb0g5Q2m5Z_pS_ZCwp52cKQizZKh4wyMgP._sSgDXIK41vHaCY6fr5A",
+      "domain": ".volume.com",
+      "path": "/",
+      "expires": 1740693227.798614,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "django_timezone",
+      "value": "Asia/Manila",
+      "domain": "volume.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "csrftoken",
+      "value": "x9uXUn2WFKTqzfAUxHlvaDyjAn529vt9",
+      "domain": "volume.com",
+      "path": "/",
+      "expires": 1772141033.43917,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "sessionid",
+      "value": "fr7l9nfpzjtwqg1bkd6ktof9s3ebmcr3",
+      "domain": ".volume.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://volume.com",
+      "localStorage": [
+        {
+          "name": "NRBA_SESSION",
+          "value": "{\"value\":\"7691a0417b7eea7e\",\"inactiveAt\":1740693229873,\"expiresAt\":1740705829872,\"updatedAt\":1740691435085,\"sessionReplayMode\":0,\"sessionReplaySentFirstChunk\":false,\"sessionTraceMode\":1,\"traceHarvestStarted\":false,\"loggingMode\":0,\"serverTimeDiff\":-265,\"custom\":{}}"
+        }
+      ]
+    }
+  ]
+}
