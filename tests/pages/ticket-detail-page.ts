@@ -1,25 +1,47 @@
 import { Page, Locator, expect } from '@playwright/test'
 
+export enum ButtonType {
+    Free = 'Claim Free Ticket',
+    Buy = 'Buy Ticket:',
+    Donate = 'Donate and Claim',
+    Discounted = 'Discounted',
+    ViewButton = 'View Ticket'
+}
+
 export class TicketDetailPage {
     private readonly page: Page;
-    private readonly button: Locator
+    private readonly buttonLocator: Locator
 
     constructor(page: Page) {
         this.page = page;
-        this.button = page.getByRole('button').filter({ has: this.page.locator('.btn.btn-lg.btn-primary.w-100')})
+        this.buttonLocator = page.locator('.justify-content-center.d-none.d-sm-flex.w-100').getByRole('button');
     }
 
-    async clickBuyTicket(buttonType: 'Claim Free Show' | 'Buy Ticket:' | 'Donate and Claim' | 'Discounted') {
-        const buttonFilter =
-            buttonType.startsWith('Buy Ticket:') ? 'Buy Ticket:' :
-            ['Claim Free Show', 'Donate and Claim', 'Discounted'].includes(buttonType) ? buttonType :
-            null;
+    async getTicket(buttonType: ButtonType, price?: number) {
+        let buttonText: string = buttonType; 
+        
+        if ((buttonType === ButtonType.Buy || buttonType === ButtonType.Discounted) && price !== undefined) {
+            const Price = price.toFixed(2);  
+            buttonText = `${buttonType} $${Price}`;
+            const button = this.page.getByRole('button', { name: buttonText });
+            await button.click();
+            await expect(this.page).toHaveURL(/\/products\/checkout\/select_paymethod\/[a-f0-9-]+\/\?fl=\w+/);
+        } else if (buttonType === ButtonType.Donate) {
+            const button = this.buttonLocator.filter({ hasText: buttonText });
 
-        if (!buttonFilter) {
-            throw new Error(`Invalid button type: ${buttonType}`);
+            await button.click();
+            await this.page.waitForSelector('#ticketDonateModal', { state: 'visible' });
+            
+            await this.page.getByRole('spinbutton', { name: 'Donation USD Amount' }).fill('10');
+            await this.page.getByRole('button', { name: 'Donate Now' }).click();
+        
+            await expect(this.page).toHaveURL(/\/products\/checkout\/select_paymethod\/[a-f0-9-]+\/\?fl=\w+/);
+            await this.page.waitForTimeout(1000)
         }
-
-        const filteredButton = this.button.filter({ hasText: buttonFilter });
-        await filteredButton.click();
+         else {
+            const button = this.buttonLocator.filter({ hasText: buttonText });
+            await button.click();
+            await expect(this.page).toHaveURL(/\/scheduled_show\/ticket_confirmation\/.*/);
+        }
     }
 }
