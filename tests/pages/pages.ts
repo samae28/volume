@@ -4,8 +4,9 @@ import { LoginPage } from './login-page';
 
 import { UpcomingShowPage } from './upcoming-show-page';
 import { TicketDetailPage } from './ticket-detail-page';
-import { MyTicketPage } from './my-ticket-page.ts';
-import { PaymentPage } from './payment-page.ts';
+import { MyTicketPage } from './my-ticket-page';
+import { PaymentPage } from './payment-page';
+import { ProductCheckoutPage } from './product-checkout-page'
 
 export class PageHandler {
     private readonly page: Page;
@@ -14,6 +15,7 @@ export class PageHandler {
     private readonly ticketDetailPage: TicketDetailPage
     private readonly myTicketPage: MyTicketPage
     private readonly paymentPage: PaymentPage
+    private readonly productCheckoutPage: ProductCheckoutPage  
 
     constructor(page: Page){
         this.page = page;
@@ -22,6 +24,7 @@ export class PageHandler {
         this.ticketDetailPage = new TicketDetailPage(this.page);
         this.myTicketPage = new MyTicketPage(this.page)
         this.paymentPage = new PaymentPage(this.page)
+        this.productCheckoutPage = new ProductCheckoutPage(this.page)
     }
 
     async gotoUpcomingShow(){
@@ -47,5 +50,9 @@ export class PageHandler {
 
     async payment(){
         return this.paymentPage
+    }
+
+    async productCheckout(){
+        return this.productCheckoutPage
     }
 }

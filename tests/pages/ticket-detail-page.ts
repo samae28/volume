@@ -1,12 +1,13 @@
 import { Page, Locator, expect } from '@playwright/test'
+import { ButtonType } from 'tests/utils/utils';
 
-export enum ButtonType {
-    Free = 'Claim Free Ticket',
-    Buy = 'Buy Ticket:',
-    Donate = 'Donate and Claim',
-    Discounted = 'Discounted',
-    ViewButton = 'View Ticket'
-}
+// export enum ButtonType {
+//     Free = 'Claim Free Ticket',
+//     Buy = 'Buy Ticket:',
+//     Donate = 'Donate and Claim',
+//     Discounted = 'Discounted',
+//     ViewButton = 'View Ticket'
+// }
 
 export class TicketDetailPage {
     private readonly page: Page;

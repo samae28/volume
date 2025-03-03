@@ -1,17 +1,17 @@
 import { Page, Locator, expect } from '@playwright/test'
+import { ShowType, TicketType } from 'tests/utils/utils';
+// export enum ShowType{
+//     OneTime = 'one-time',
+//     Festival = 'festival',
+// }
 
-export enum ShowType{
-    OneTime = 'one-time',
-    Festival = 'festival',
-}
-
-export enum TicketType{
-    Free = 'Free Show',
-    Purchase = 'Purchase',
-    Donate = 'Donate',
-    Discounted = 'Discounted',
-    FreeForSubscribers = 'Free for Subscribers',
-}
+// export enum TicketType{
+//     Free = 'Free Show',
+//     Purchase = 'Purchase',
+//     Donate = 'Donate',
+//     Discounted = 'Discounted',
+//     FreeForSubscribers = 'Free for Subscribers',
+// }
 export class UpcomingShowPage {
     private readonly page: Page;
     private readonly festival: Locator;

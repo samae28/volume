@@ -1,8 +1,7 @@
 // import { expect } from '@playwright/test';
 import { test } from '../config/page-setup';
-import { ButtonType } from '../pages/ticket-detail-page';
-import { ShowType, TicketType } from '../pages/upcoming-show-page';
-import { PaymentType } from '../pages/payment-page';
+import { ShowType, TicketType, ButtonType, PaymentType, CardDetails } from 'tests/utils/utils';
+
 
 
 test.describe('One Time Show', () => {
@@ -22,7 +21,7 @@ test.describe('One Time Show', () => {
     
             await (await pageHandler.ticketDetail()).getTicket(ButtonType.Buy, 5);
             await (await pageHandler.payment()).selectPaymentType(PaymentType.CreditCard);
-
+            await (await pageHandler.productCheckout()).pay(CardDetails.cardNumber, CardDetails.expiry, CardDetails.CVC);
         })
 
         test.describe('Donate - not live', async() => {

@@ -1,9 +1,10 @@
 import { Page, Locator, expect } from '@playwright/test'
+import { PaymentType } from 'tests/utils/utils';
 
-export enum PaymentType {
-    CreditCard = 'Credit Card',
-    PayPal = 'PayPal',
-}
+// export enum PaymentType {
+//     CreditCard = 'Credit Card',
+//     PayPal = 'PayPal',
+// }
 export class PaymentPage {
     private readonly page: Page;
     private readonly buttonLocator: Locator;
