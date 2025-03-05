@@ -11,8 +11,8 @@ export class ProductCheckoutPage {
     private readonly cardNumberFrame: FrameLocator;
     private readonly expiryFrame: FrameLocator;
     private readonly cvcFrame: FrameLocator;
-    private readonly saveWithLinkFrame: FrameLocator;  // Assuming this is the iframe for saving with a link checkbox
-
+    private readonly saveWithLinkFrame: FrameLocator;  
+    
     constructor(page: Page) {
         this.page = page;
         this.cardNumberFrame = this.page.frameLocator('iframe').nth(0);
@@ -32,7 +32,9 @@ export class ProductCheckoutPage {
         if (await saveWithLinkCheckbox.isVisible()) {
             await saveWithLinkCheckbox.click({force: true});
         }
-
+        await this.page.waitForTimeout(10000)
+        const payButton = this.page.getByRole('button', { name: 'Pay Now' });
+        await payButton.click();
         await this.page.waitForTimeout(10000)
 
     }

@@ -1,58 +1,52 @@
-import { Page } from '@playwright/test';
+import { Page } from "playwright";
+import { Assertions } from "tests/utils/assertion";
+import { UpcomingShowPage } from "./upcoming-show-page";
+import { TicketDetailPage } from "./ticket-detail-page";
+// import { TicketConfirmationPage } from "./ticket-confirmation-page";
+import { PaymentPage } from "./payment-page";
+import { ProductCheckoutPage } from "./product-checkout-page";
 
-import { LoginPage } from './login-page';
-
-import { UpcomingShowPage } from './upcoming-show-page';
-import { TicketDetailPage } from './ticket-detail-page';
-import { MyTicketPage } from './my-ticket-page';
-import { PaymentPage } from './payment-page';
-import { ProductCheckoutPage } from './product-checkout-page'
-
-export class PageHandler {
+export class PageHandler{
     private readonly page: Page;
-    private readonly loginPage: LoginPage
+    private readonly assertions: Assertions
     private readonly upcomingShowPage: UpcomingShowPage
     private readonly ticketDetailPage: TicketDetailPage
-    private readonly myTicketPage: MyTicketPage
+    // private readonly ticketConfirmationPage: TicketConfirmationPage
     private readonly paymentPage: PaymentPage
-    private readonly productCheckoutPage: ProductCheckoutPage  
+    private readonly productCheckoutPage: ProductCheckoutPage
 
-    constructor(page: Page){
+    constructor(page: Page) {
         this.page = page;
-        this.loginPage = new LoginPage(this.page);
+        this.assertions = new Assertions(this.page)
         this.upcomingShowPage = new UpcomingShowPage(this.page);
         this.ticketDetailPage = new TicketDetailPage(this.page);
-        this.myTicketPage = new MyTicketPage(this.page)
-        this.paymentPage = new PaymentPage(this.page)
-        this.productCheckoutPage = new ProductCheckoutPage(this.page)
+        // this.ticketConfirmationPage = new TicketConfirmationPage(this.page);
+        this.paymentPage = new PaymentPage(this.page);
+        this.productCheckoutPage = new ProductCheckoutPage(this.page);
     }
 
-    async gotoUpcomingShow(){
-        await this.page.goto('https://volume.com/');
+    async navigateToUpcomingShows() {
+        await this.page.goto('https://volume-qa3.skydev.solutions/');
         await this.page.locator('li').getByText('Upcoming Shows').click();
+        return this.upcomingShowPage;
     }
 
-    async login(){
-        return this.loginPage
-    }
-
-    async upcomingShow(){
+    upcomingShow(){
         return this.upcomingShowPage
     }
-
-    async ticketDetail(){
+    ticketDetail(){
         return this.ticketDetailPage
     }
 
-    async myTicket(){
-        return this.myTicketPage
-    }
-
-    async payment(){
+    payment(){
         return this.paymentPage
     }
 
-    async productCheckout(){
+    productCheckout() {
         return this.productCheckoutPage
+    }
+
+    assertion(){
+        return this.assertions
     }
 }

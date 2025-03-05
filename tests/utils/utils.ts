@@ -1,9 +1,7 @@
-// Enums
 export enum ButtonType {
     Free = 'Claim Free Ticket',
     Buy = 'Buy Ticket:',
     Donate = 'Donate and Claim',
-    Discounted = 'Discounted',
     ViewButton = 'View Ticket'
 }
 
