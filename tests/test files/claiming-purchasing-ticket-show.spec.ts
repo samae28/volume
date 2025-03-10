@@ -232,7 +232,7 @@ test.describe('Festival show', async () => {
         await pageHandler.assertion().assertTicketConfirmationPageLoaded()
     })
 
-    test.describe.only('Ticket With Price', async() => {
+    test.describe('Ticket With Price', async() => {
     test('Discounted', async({page, pageHandler}) => {
         await pageHandler.navigateToUpcomingShows();
         await pageHandler.assertion().assertUpcomingPageLoaded()
