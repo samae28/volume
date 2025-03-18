@@ -2,7 +2,6 @@ import { Page } from "playwright";
 import { Assertions } from "tests/utils/assertion";
 import { UpcomingShowPage } from "./upcoming-show-page";
 import { TicketDetailPage } from "./ticket-detail-page";
-// import { TicketConfirmationPage } from "./ticket-confirmation-page";
 import { PaymentPage } from "./payment-page";
 import { ProductCheckoutPage } from "./product-checkout-page";
 
