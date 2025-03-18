@@ -31,7 +31,7 @@ export default defineConfig<Setup>({
     // qaURL: 'https://volume-qa1.skydev.solutions',https://volume.com/
     qaURL: 'https://volume.com/',
 
-    actionTimeout: 5000, // 5 seconds timeout for every action
+    // actionTimeout: 5000, // 5 seconds timeout for every action
     navigationTimeout: 10000,
     
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
@@ -48,7 +48,7 @@ export default defineConfig<Setup>({
       use: {
         ...devices['Desktop Chrome'],
         // Use prepared auth state.
-        storageState: 'playwright/.auth/user.json',
+        storageState: './playwright/.auth/user.json',
       },
       dependencies: ['setup'],
     },

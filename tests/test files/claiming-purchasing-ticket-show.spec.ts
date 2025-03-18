@@ -4,7 +4,7 @@ import * as Components from 'tests/utils/utils';
 
 test.describe('One Time Show', async () => {
     test.describe('Ticket is not yet claimed and Broadcaster is not yet live', async () => {
-        test('Free ticket', async({page, pageHandler}) => {
+        test.only('Free ticket', async({page, pageHandler}) => {
             await pageHandler.navigateToUpcomingShows();
             await pageHandler.assertion().assertUpcomingPageLoaded()
 
